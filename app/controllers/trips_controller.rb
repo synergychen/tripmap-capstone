@@ -33,6 +33,12 @@ class TripsController < ApplicationController
     end
   end
 
+  def destroy
+    trip = load_trip_from_url
+    trip.destroy
+    redirect_to trips_path
+  end
+
   private
 
   def load_trip_from_url
