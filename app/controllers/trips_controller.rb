@@ -8,8 +8,8 @@ class TripsController < ApplicationController
   end
 
   def create
-    @trip = current_user.trips.new
-    if @trip.update(trip_params)
+    @trip = current_user.trips.new(trip_params)
+    if @trip.save
       redirect_to root_path
     else
       render :new
