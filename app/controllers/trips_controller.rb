@@ -16,7 +16,15 @@ class TripsController < ApplicationController
     end
   end
 
+  def show
+    @trip = load_trip_from_url
+  end
+
   private
+
+  def load_trip_from_url
+    current_user.trips.find(params[:id])
+  end
 
   def trip_params
     params.require(:trip).permit(:date, :city, :completed)
