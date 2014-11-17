@@ -3,9 +3,12 @@ class CreateTrips < ActiveRecord::Migration
     create_table :trips do |t|
       t.date :date
       t.string :city
-      t.boolean :completed
+      t.boolean :completed, default: false
+      t.integer :user_id, null: false
 
-      t.timestamps
+      t.timestamps null: false
     end
+
+    add_index :trips, :user_id
   end
 end

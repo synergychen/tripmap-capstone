@@ -1,14 +1,14 @@
 class TripsController < ApplicationController
   def index
-    @trips = Trip.all
+    @trips = current_user.trips.all
   end
 
   def new
-    @trip = Trip.new
+    @trip = current_user.trips.new
   end
 
   def create
-    @trip = Trip.new
+    @trip = current_user.trips.new
     if @trip.update(trip_params)
       redirect_to root_path
     else
