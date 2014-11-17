@@ -11,18 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141117182945) do
+ActiveRecord::Schema.define(version: 20141118153449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "locations", force: true do |t|
+    t.string   "name"
+    t.string   "address",     null: false
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "trip_location_relationships", force: true do |t|
+    t.integer  "trip_id",             null: false
+    t.integer  "location_id",         null: false
+    t.integer  "order",               null: false
+    t.integer  "stay_time",           null: false
+    t.string   "transportation_mode"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "trip_location_relationships", ["order"], name: "index_trip_location_relationships_on_order", unique: true, using: :btree
+  add_index "trip_location_relationships", ["trip_id", "location_id"], name: "index_trip_location_relationships_on_trip_id_and_location_id", unique: true, using: :btree
+
   create_table "trips", force: true do |t|
-    t.date     "date"
     t.string   "city"
     t.boolean  "completed",  default: false, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "user_id",                    null: false
+    t.datetime "starts_on",                  null: false
   end
 
   add_index "trips", ["user_id"], name: "index_trips_on_user_id", using: :btree

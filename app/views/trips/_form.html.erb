@@ -1,6 +1,6 @@
 <%= form_for trip do |form| %>
-  <%= form.label :date %>
-  <%= form.date_field :date %>
+  <%= form.label :starts_on %>
+  <%= form.datetime_local_field :starts_on %>
 
   <%= form.label :city %>
   <%= form.text_field :city %>
