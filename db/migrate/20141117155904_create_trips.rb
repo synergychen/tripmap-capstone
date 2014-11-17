@@ -5,7 +5,7 @@ class CreateTrips < ActiveRecord::Migration
       t.string :city
       t.boolean :completed, default: false
 
-      t.timestamps null: false
+      t.timestamps
     end
   end
 end
