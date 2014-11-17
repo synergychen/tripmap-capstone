@@ -20,6 +20,19 @@ class TripsController < ApplicationController
     @trip = load_trip_from_url
   end
 
+  def edit
+    @trip = load_trip_from_url
+  end
+
+  def update
+    @trip = load_trip_from_url
+    if @trip.update(trip_params)
+      redirect_to @trip
+    else
+      render :edit
+    end
+  end
+
   private
 
   def load_trip_from_url
