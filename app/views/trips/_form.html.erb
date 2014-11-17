@@ -1,0 +1,7 @@
+<%= form_for trip do |form| %>
+  <%= form.label :date %>
+  <%= form.date_field :date %>
+  <%= form.label :city %>
+  <%= form.text_field :city %>
+  <%= form.submit %>
+<% end %>
