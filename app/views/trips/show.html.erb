@@ -10,6 +10,8 @@
 
 <%= button_to "Delete", @trip, method: :delete %>
 
+<h3>View all locations and stops</h3>
+
 <table>
   <tr>
     <th>No.</th>
@@ -21,3 +23,5 @@
 
   <%= render @trip.stops %>
 </table>
+
+<%= link_to "Create a new location", new_location_path %>
