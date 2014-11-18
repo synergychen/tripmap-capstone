@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118153449) do
+ActiveRecord::Schema.define(version: 20141118191243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20141118153449) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "trip_location_relationships", force: true do |t|
+  create_table "stops", force: true do |t|
     t.integer  "trip_id",             null: false
     t.integer  "location_id",         null: false
     t.integer  "order",               null: false
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20141118153449) do
     t.datetime "updated_at",          null: false
   end
 
-  add_index "trip_location_relationships", ["order"], name: "index_trip_location_relationships_on_order", unique: true, using: :btree
-  add_index "trip_location_relationships", ["trip_id", "location_id"], name: "index_trip_location_relationships_on_trip_id_and_location_id", unique: true, using: :btree
+  add_index "stops", ["order"], name: "index_stops_on_order", unique: true, using: :btree
+  add_index "stops", ["trip_id", "location_id"], name: "index_stops_on_trip_id_and_location_id", unique: true, using: :btree
 
   create_table "trips", force: true do |t|
     t.string   "city"

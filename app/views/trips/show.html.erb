@@ -18,5 +18,6 @@
     <th>Stay Time</th>
     <th>Description</th>
   </tr>
-  <%= render partial: @trip.locations, locals: { trip: @trip } %>
+
+  <%= render @trip.stops %>
 </table>

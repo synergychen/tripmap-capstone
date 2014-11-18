@@ -4,6 +4,6 @@ class Trip < ActiveRecord::Base
 
   belongs_to :user
 
-  has_many :trip_location_relationships
-  has_many :locations, through: :trip_location_relationships
+  has_many :stops
+  has_many :locations, through: :stops
 end
