@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create]
 
-  resources :trips
+  resources :trips do
+    resources :stops, only: [:new, :create]
+  end
 
   resources :locations, only: [:new, :create]
 end

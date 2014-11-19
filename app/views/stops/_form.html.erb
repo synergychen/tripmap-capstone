@@ -1,0 +1,12 @@
+<%= form_for [trip, stop] do |form| %>
+  <%= form.label :stay_time %>
+  <%= form.text_field :stay_time %>
+
+  <%= form.label :transportation_mode %>
+  <%= form.text_area :transportation_mode %>
+
+  <%= form.label :location_id %>
+  <%= form.text_field :location_id %>
+
+  <%= form.submit %>
+<% end %>
