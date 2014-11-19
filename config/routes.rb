@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   resources :trips do
-    resources :stops, only: [:new, :create]
+    resources :stops, only: [:new, :create, :edit, :update]
   end
 
   resources :locations, only: [:new, :create]

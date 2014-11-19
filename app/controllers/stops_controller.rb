@@ -15,10 +15,31 @@ class StopsController < ApplicationController
     end
   end
 
+  def edit
+    @trip = load_trip_from_url
+    @stop = load_stop_from_url
+  end
+
+  def update
+    @trip = load_trip_from_url
+    @stop = load_stop_from_url
+
+    if @stop.update(stop_params)
+      redirect_to @trip
+    else
+      render :edit
+    end
+  end
+
   private
 
   def load_trip_from_url
     current_user.trips.find(params[:trip_id])
+  end
+
+  def load_stop_from_url
+    trip = load_trip_from_url
+    trip.stops.find(params[:id])
   end
 
   def stop_params

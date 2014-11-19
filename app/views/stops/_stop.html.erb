@@ -1,7 +1,13 @@
 <tr>
   <td><%= stop.order %></td>
+  <td><%= stop.trip_id %></td>
+  <td><%= stop.location_id %></td>
   <td><%= stop.location.name %></td>
   <td><%= stop.location.address %></td>
   <td><%= stop.stay_time %> minutes</td>
+  <td><%= stop.transportation_mode %></td>
   <td><%= stop.location.description %></td>
+  <td>
+    <%= link_to "Edit stop", edit_trip_stop_path(stop.trip, stop) %>
+  </td>
 </tr>
