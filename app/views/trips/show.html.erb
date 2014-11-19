@@ -1,10 +1,14 @@
 <h3>View Trip to <%= @trip.city %> on <%= @trip.starts_on %></h3>
 
-<ul>
-  <li>Starts On: <%= @trip.starts_on %></li>
-  <li>City: <%= @trip.city %></li>
-  <li>Completed: <%= @trip.completed %></li>
-</ul>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Starts On</th>
+    <th>Place</th>
+    <th>Status (if completed)</th>
+  </tr>
+  <tr><%= render @trip %></tr>
+</table>
 
 <%= link_to "Edit", edit_trip_path(@trip) %>
 

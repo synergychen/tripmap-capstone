@@ -6,4 +6,12 @@ class Trip < ActiveRecord::Base
 
   has_many :stops
   has_many :locations, through: :stops
+
+  def update_stops_after(deleted_stop)
+    stops.each do |stop|
+      if stop.order > deleted_stop.order
+        stop.update(order: stop.order - 1)
+      end
+    end
+  end
 end

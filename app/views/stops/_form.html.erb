@@ -3,7 +3,8 @@
   <%= form.text_field :stay_time %>
 
   <%= form.label :transportation_mode %>
-  <%= form.text_area :transportation_mode %>
+  <%= form.select :transportation_mode, ["Walking", "Transit",
+                                         "Driving", "Cycling"] %>
 
   <%= form.label :location_id %>
   <%= form.collection_select :location_id, Location.all, :id, :name_with_address %>
