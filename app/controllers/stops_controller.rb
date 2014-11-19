@@ -31,6 +31,14 @@ class StopsController < ApplicationController
     end
   end
 
+  def destroy
+    trip = load_trip_from_url
+    stop = load_stop_from_url
+    stop.destroy
+
+    redirect_to trip
+  end
+
   private
 
   def load_trip_from_url

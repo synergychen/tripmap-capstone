@@ -9,5 +9,6 @@
   <td><%= stop.location.description %></td>
   <td>
     <%= link_to "Edit stop", edit_trip_stop_path(stop.trip, stop) %>
+    <%= button_to "Delete stop", [stop.trip, stop], method: :delete %>
   </td>
 </tr>
