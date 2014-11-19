@@ -6,9 +6,9 @@ class Stop < ActiveRecord::Base
     order(:order)
   end
 
-  def update_all_stop_orders
-    trip.stops.each do |stop|
-      if stop.order > order
+  def update_stops_after(deleted_stop)
+    stops.each do |stop|
+      if stop.order > deleted_stop.order
         stop.update(order: stop.order - 1)
       end
     end
