@@ -6,7 +6,7 @@
   <%= form.text_area :transportation_mode %>
 
   <%= form.label :location_id %>
-  <%= form.text_field :location_id %>
+  <%= form.collection_select :location_id, Location.all, :id, :name_with_address %>
 
   <%= form.submit %>
 <% end %>

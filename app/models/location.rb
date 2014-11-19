@@ -3,4 +3,8 @@ class Location < ActiveRecord::Base
 
   has_many :stops
   has_many :trips, through: :stops
+
+  def name_with_address
+    "#{name} (#{address})"
+  end
 end
