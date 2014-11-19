@@ -6,7 +6,7 @@ class StopsController < ApplicationController
 
   def create
     @trip = load_trip_from_url
-    @stop = @trip.stops.new(stop_params)
+    @stop = @trip.stops.new(stop_params.merge(order: @trip.stops.count + 1))
 
     if @stop.save
       redirect_to @trip
@@ -23,7 +23,6 @@ class StopsController < ApplicationController
 
   def stop_params
     params.require(:stop).
-      permit(:order, :stay_time, :transportation_mode,
-             :trip_id, :location_id)
+      permit(:stay_time, :transportation_mode, :trip_id, :location_id)
   end
 end
