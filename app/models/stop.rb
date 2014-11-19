@@ -9,7 +9,7 @@ class Stop < ActiveRecord::Base
   def update_all_stop_orders
     trip.stops.each do |stop|
       if stop.order > order
-        stop.update(order: stop.order-1)
+        stop.update(order: stop.order - 1)
       end
     end
   end
