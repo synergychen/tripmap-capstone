@@ -35,6 +35,7 @@ class StopsController < ApplicationController
     trip = load_trip_from_url
     stop = load_stop_from_url
     stop.destroy
+    trip.update_stops_after(stop)
 
     redirect_to trip
   end
