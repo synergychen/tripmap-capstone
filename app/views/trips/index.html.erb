@@ -2,6 +2,12 @@
 
 <%= link_to "Create a new trip", new_trip_path %>
 
-<ul>
-  <%= render @trips %>
-</ul>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Starts On</th>
+    <th>Place</th>
+    <th>Status (if completed)</th>
+  </tr>
+  <tr><%= render @trips %></tr>
+</table>
