@@ -8,5 +8,9 @@ Rails.application.routes.draw do
     resources :stops, only: [:new, :create, :edit, :update, :destroy]
   end
 
+  resources :stops, only: [:new, :create, :edit, :update, :destroy] do
+    resource :stop_orders, only: [:edit, :update]
+  end
+
   resources :locations, only: [:new, :create]
 end

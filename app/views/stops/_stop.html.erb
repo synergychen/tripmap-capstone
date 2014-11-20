@@ -7,8 +7,13 @@
   <td><%= stop.stay_time %> minutes</td>
   <td><%= stop.transportation_mode %></td>
   <td><%= stop.location.description %></td>
+
   <td>
     <%= link_to "Edit stop", edit_trip_stop_path(stop.trip, stop) %>
     <%= button_to "Delete stop", [stop.trip, stop], method: :delete %>
+  </td>
+
+  <td>
+    <%= link_to "Change order", edit_stop_stop_orders_path(stop) %>
   </td>
 </tr>

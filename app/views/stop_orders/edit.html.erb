@@ -1,0 +1,10 @@
+<h3>Change order of : "<%= @location.name %> (<%= @location.address %>)"</h3>
+
+<p>
+  Change stop order from <%= @stop.order %> to
+
+  <%= form_for @stop, url: stop_stop_orders_path(@stop) do |form| %>
+    <%= form.select :order, (1..@trip.stops.count) %>
+    <%= form.submit "Change Order" %>
+  <% end %>
+</p>
