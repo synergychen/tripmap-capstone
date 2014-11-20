@@ -2,9 +2,12 @@
 <html>
 <head>
   <title>Tripmap</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ4_p1yfXKUuWWQsOAFWN52wyOXz8K81E">
+  </script>
+  <%= javascript_include_tag 'application' %>
 </head>
 <body>
   <div class="header">

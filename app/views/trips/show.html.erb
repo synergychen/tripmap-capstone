@@ -16,7 +16,7 @@
 
 <h3>View all locations and stops</h3>
 
-<table>
+<table class="trip-table">
   <tr>
     <th>No.</th>
     <th>Trip ID</th>
@@ -35,3 +35,5 @@
 <%= link_to "Create a new location", new_location_path %>
 
 <%= link_to "Add a stop", new_trip_stop_path(@trip) %>
+
+<div id="map-canvas"></div>

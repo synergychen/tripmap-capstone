@@ -1,4 +1,4 @@
 <td><%= trip.starts_on.to_date %></td>
 <td><%= trip.starts_on.strftime("%I:%M%p") %></td>
-<td><%= link_to trip.city, trip %></td>
+<td class="trip-city"><%= link_to trip.city, trip %></td>
 <td><%= trip.completed %></td>
