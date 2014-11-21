@@ -38,8 +38,7 @@
 
 <div class="mode-select">
   <%= select_tag "mode-select-tag", options_for_select(
-    [["Walking", "WALKING"], ["Driving", "DRIVING"],
-     ["Bicycling", "BICYCLING"]]) %>
+  ApplicationHelper::WAYPOINTS_TRANS_MODE) %>
 </div>
 
 <div class="calculated-distances"></div>

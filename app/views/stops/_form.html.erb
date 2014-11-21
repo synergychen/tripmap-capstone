@@ -3,8 +3,8 @@
   <%= form.text_field :stay_time %>
 
   <%= form.label :transportation_mode %>
-  <%= form.select :transportation_mode, ["Walking", "Transit",
-                                         "Driving", "Cycling"] %>
+  <%= form.select :transportation_mode,
+    ApplicationHelper::TRANSPORTATION_MODE.map(&:capitalize) %>
 
   <%= form.label :location_id %>
   <%= form.collection_select :location_id, Location.all, :id, :name_with_address %>
