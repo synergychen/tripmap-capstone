@@ -8,8 +8,11 @@ var directionsService = new google.maps.DirectionsService();
 
 $(function() {
   initialize();
-  calcAndDrawAllRoute();
-  $("#mode-select-tag").change(calcAndDrawAllRoute);
+  calcAndDrawAllRoute(displayDistanceAndTime);
+
+  $("#mode-select-tag").change(function(){ 
+    calcAndDrawAllRoute(displayDistanceAndTime);
+  });
 })
 
 function initialize() {
@@ -35,7 +38,7 @@ function getStopsAndWaypoints() {
   });
 }
 
-function calcAndDrawAllRoute() {
+function calcAndDrawAllRoute(callback) {
   var selectedMode = $("#mode-select-tag")[0].value;
 
   var request = {
@@ -51,10 +54,22 @@ function calcAndDrawAllRoute() {
       directionsDisplay.setDirections(response);
       var route = response.routes[0];
 
+      distances = [];
+      durations = [];
+
       for (var i = 0; i < route.legs.length; i++) {
         distances.push(route.legs[i].distance.text);
         durations.push(route.legs[i].duration.text);
       }
     }
+    callback();
   });
+}
+
+function displayDistanceAndTime() {
+  var calcDistances = $(".calculated-distances");
+  var calcTimes = $(".calculated-times");
+
+  calcDistances.html(distances);
+  calcTimes.html(durations);
 }
