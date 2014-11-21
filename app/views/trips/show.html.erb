@@ -36,4 +36,11 @@
 
 <%= link_to "Add a stop", new_trip_stop_path(@trip) %>
 
+<div class="mode-select">
+  <%= select_tag "mode-select-tag", options_for_select(
+    [["Walking", "WALKING"], ["Driving", "DRIVING"],
+     ["Bicycling", "BICYCLING"]]) %>
+</div>
+
 <div id="map-canvas"></div>
+

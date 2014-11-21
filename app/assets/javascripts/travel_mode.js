@@ -1,38 +1,46 @@
+var startAndEndStop = [];
+var waypts = [];
+var distances = [];
+var durations = [];
+
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 
-var mmWorld = "1600 Broadway, New York";
-var MOMA = "11 W 53rd St, New York";
-var ROCK = "30 Rockefeller Plaza, New York";
-var home = "200 w 48 street, New York";
-
-var waypts = [{location: MOMA}, {location: ROCK}];
-
-var distances = [];
-
-var durations = [];
-
 $(function() {
   initialize();
-  calcRoute();
-  console.log("after all calc", distances);
+  calcAndDrawAllRoute();
+  $("#mode-select-tag").change(calcAndDrawAllRoute);
 })
 
 function initialize() {
   directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
   directionsDisplay.setMap(window.map);
+
+  getStopsAndWaypoints();
 }
 
-function drawAllRoutes() {
+function getStopsAndWaypoints() {
+  var tripCity = $(".trip-city").find("a").html();
+  var stopNumber = $(".trip-table-row").length;
+
+  $.each($(".trip-table-row"), function(i, trip) {
+    var stopAddress = $(trip).find(".location-address").html();
+    var address = stopAddress + ", " + tripCity
+
+    if ( i === 0 || i === stopNumber - 1 ) {
+      startAndEndStop.push(address);
+    } else {
+      waypts.push({location: address});
+    }
+  });
 }
 
-function calcRoute() {
-  // var selectedMode = document.getElementById('mode').value;
-  var selectedMode = "WALKING";
+function calcAndDrawAllRoute() {
+  var selectedMode = $("#mode-select-tag")[0].value;
 
   var request = {
-      origin: mmWorld,
-      destination: home,
+      origin: startAndEndStop[0],
+      destination: startAndEndStop[1],
       waypoints: waypts,
       optimizeWaypoints: true,
       travelMode: google.maps.TravelMode[selectedMode]
@@ -46,10 +54,7 @@ function calcRoute() {
       for (var i = 0; i < route.legs.length; i++) {
         distances.push(route.legs[i].distance.text);
         durations.push(route.legs[i].duration.text);
-        console.log("in loop", distances);
       }
     }
   });
-
-  console.log("after loop", distances);
 }

@@ -17,9 +17,9 @@ function drawMap() {
 
   $.each($(".trip-table-row"), function(i, trip) {
     var stopOrder = $(trip).find(".stop-order").html();
-    var stopAddress = $(trip).find(".stop-address").html();
+    var stopAddress = $(trip).find(".location-address").html();
     var locationName= $(trip).find(".location-name").html();
-    var address = tripCity + stopAddress
+    var address = stopAddress + ", " + tripCity
 
     codeAddress(address, function(geocodeAddress){
       marker = addMarker(i+1, geocodeAddress);
