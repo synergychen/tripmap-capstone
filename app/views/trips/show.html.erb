@@ -23,7 +23,7 @@
     <th>Location ID</th>
     <th>Name</th>
     <th>Address</th>
-    <th>Stay Time</th>
+    <th>Stay Time (minutes)</th>
     <th>Transportation Mode</th>
     <th>Description</th>
     <th></th>
@@ -41,9 +41,10 @@
   ApplicationHelper::WAYPOINTS_TRANS_MODE) %>
 </div>
 
-<div class="calculated-distances"></div>
+<div class="distance-summary"></div>
 
-<div class="calculated-times"></div>
+<div class="duration-summary"></div>
+
+<div class="stay_time-summary"></div>
 
 <div id="map-canvas"></div>
-
