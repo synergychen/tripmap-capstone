@@ -12,5 +12,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'better_errors', group: :development
 gem 'binding_of_caller', group: :development
 gem 'monban-generators'
+gem 'neat'
 gem 'pry', group: :development
 gem 'rails_12factor', group: :production
