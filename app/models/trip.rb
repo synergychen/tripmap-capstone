@@ -8,6 +8,8 @@ class Trip < ActiveRecord::Base
   has_many :stops
   has_many :locations, through: :stops
 
+  belongs_to :owner, class_name: "User"
+
   def reorder_stops_after(stop, proposed_order)
     ordered_stop_ids = get_ordered_stops_ids
 
