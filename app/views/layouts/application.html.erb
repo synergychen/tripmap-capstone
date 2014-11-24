@@ -15,16 +15,18 @@
       <div class="header-logo"></div>
 
       <div class="header-title">
-        <%= link_to "Trip Map", root_path, class: "header-title-link" %>
+        <%= link_to "TripMap", root_path, class: "header-title-link" %>
       </div>
 
-      <div class="header-nav left">
-        <ul class="header-nav-list">
-          <li class="header-nav-item">
+      <% if signed_in? %>
+        <div class="header-nav left">
+          <ul class="header-nav-list">
+            <li class="header-nav-item">
             <%= link_to "My Trips", trips_path, class: "header-nav-link" %>
-          </li>
-        </ul>
-      </div>
+            </li>
+          </ul>
+        </div>
+      <% end %>
 
       <div class="header-nav right">
         <ul class="header-nav-list">
