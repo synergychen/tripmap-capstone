@@ -3,8 +3,11 @@
   <td><%= trip.starts_on.strftime("%I:%M%p") %></td>
   <td class="trip-city"><%= link_to trip.city, trip %></td>
   <td><%= trip.completed %></td>
-  <td>
-    <%= link_to "Edit", edit_trip_path(@trip) %>
-    <%= button_to "Delete", @trip, method: :delete %>
-  </td>
+
+  <% if current_user.id == trip.owner_id %>
+    <td>
+      <%= link_to "Edit", edit_trip_path(trip) %>
+      <%= button_to "Delete", trip, method: :delete %>
+    </td>
+  <% end %>
 </tr>

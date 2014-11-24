@@ -48,6 +48,7 @@ class TripsController < ApplicationController
 
   def trip_params
     params.require(:trip).
-      permit(:starts_on, :city, :completed)
+      permit(:starts_on, :city, :completed).
+      merge(owner_id: current_user.id)
   end
 end
