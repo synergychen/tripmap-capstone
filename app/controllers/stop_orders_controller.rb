@@ -1,4 +1,6 @@
 class StopOrdersController < ApplicationController
+  before_action :require_ownership
+
   def edit
     @stop = load_stop_from_url
     @trip = @stop.trip
@@ -22,5 +24,10 @@ class StopOrdersController < ApplicationController
 
   def proposed_order
     params[:stop][:order].to_i
+  end
+
+  def require_ownership
+    stop = load_stop_from_url
+    require_owner(stop.trip)
   end
 end

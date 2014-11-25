@@ -1,4 +1,6 @@
 class StopsController < ApplicationController
+  before_action :require_ownership
+
   def new
     @trip = load_trip_from_url
     @stop = @trip.stops.new
@@ -54,5 +56,10 @@ class StopsController < ApplicationController
   def stop_params
     params.require(:stop).
       permit(:stay_time, :transportation_mode, :trip_id, :location_id)
+  end
+
+  def require_ownership
+    trip = Trip.find(params[:trip_id])
+    require_owner(trip)
   end
 end

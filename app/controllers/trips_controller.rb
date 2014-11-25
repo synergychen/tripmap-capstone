@@ -1,4 +1,6 @@
 class TripsController < ApplicationController
+  before_action :require_ownership, only: [:edit, :update, :destroy]
+
   def index
     @trips = current_user.trips
   end
@@ -50,5 +52,10 @@ class TripsController < ApplicationController
     params.require(:trip).
       permit(:starts_on, :city, :completed).
       merge(owner_id: current_user.id)
+  end
+
+  def require_ownership
+    trip = Trip.find(params[:id])
+    require_owner(trip)
   end
 end
