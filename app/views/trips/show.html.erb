@@ -10,6 +10,10 @@
   <tr><%= render @trip %></tr>
 </table>
 
+<div class="share-link">
+  <%= link_to "Share to friends", trip_trip_groups_path(@trip) %>
+</div>
+
 <h3>View all locations and stops</h3>
 
 <table class="trip-table">
@@ -28,9 +32,13 @@
   <%= render @trip.stops.in_order %>
 </table>
 
-<%= link_to "Create a new location", new_location_path %>
+<div class="create-link">
+  <%= link_to "Create a new location", new_location_path %>
+</div>
 
-<%= link_to "Add a stop", new_trip_stop_path(@trip) %>
+<div class="create-link">
+  <%= link_to "Add a stop", new_trip_stop_path(@trip) %>
+</div>
 
 <div class="mode-select">
   <%= select_tag "mode-select-tag", options_for_select(

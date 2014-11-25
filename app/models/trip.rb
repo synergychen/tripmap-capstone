@@ -29,6 +29,15 @@ class Trip < ActiveRecord::Base
     end
   end
 
+  def shared_users_except(user)
+    users.where.not(id: user.id)
+  end
+
+  def unshared_users
+    shared_user_ids = users.pluck(:id)
+    User.where.not(id: shared_user_ids)
+  end
+
   private
 
   def get_ordered_stops_ids
