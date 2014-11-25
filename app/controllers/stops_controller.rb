@@ -1,4 +1,9 @@
 class StopsController < ApplicationController
+  before_action do |controller|
+    trip = Trip.find(params[:trip_id])
+    controller.require_owner(trip)
+  end
+
   def new
     @trip = load_trip_from_url
     @stop = @trip.stops.new

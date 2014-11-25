@@ -1,0 +1,11 @@
+<li>
+  <%= user.email %>
+
+  <% if current_user.owner?(trip) %>
+    <% if trip.shared_to?(user) %>
+      <%= button_to "Unshare", trip_trip_groups_path(trip, user_id: user.id), method: :delete %>
+    <% else %>
+      <%= button_to "Share", trip_trip_groups_path(trip, user_id: user.id) %>
+    <% end %>
+  <% end %>
+</li>

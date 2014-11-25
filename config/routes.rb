@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :trips do
     resources :stops, only: [:new, :create, :edit, :update, :destroy]
+    resource :trip_groups, only: [:show, :create, :destroy]
   end
 
   resources :stops, only: [:new, :create, :edit, :update, :destroy] do

@@ -2,10 +2,13 @@ class Trip < ActiveRecord::Base
   validates :starts_on, presence: true
   validates :city, presence: true
 
-  belongs_to :user
+  has_many :trip_groups
+  has_many :users, through: :trip_groups
 
   has_many :stops
   has_many :locations, through: :stops
+
+  belongs_to :owner, class_name: "User"
 
   def reorder_stops_after(stop, proposed_order)
     ordered_stop_ids = get_ordered_stops_ids
@@ -24,6 +27,19 @@ class Trip < ActiveRecord::Base
         stop.update(order: stop.order - 1)
       end
     end
+  end
+
+  def shared_users_except(user)
+    users.where.not(id: user.id)
+  end
+
+  def unshared_users
+    shared_user_ids = users.pluck(:id)
+    User.where.not(id: shared_user_ids)
+  end
+
+  def shared_to?(user)
+    users.include?(user)
   end
 
   private

@@ -1,4 +1,9 @@
 class StopOrdersController < ApplicationController
+  before_action do |controller|
+    stop = load_stop_from_url
+    controller.require_owner(stop.trip)
+  end
+
   def edit
     @stop = load_stop_from_url
     @trip = @stop.trip

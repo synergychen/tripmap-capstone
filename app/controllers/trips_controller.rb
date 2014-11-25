@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   def index
-    @trips = current_user.trips.all
+    @trips = current_user.trips
   end
 
   def new
@@ -10,6 +10,7 @@ class TripsController < ApplicationController
   def create
     @trip = current_user.trips.new(trip_params)
     if @trip.save
+      current_user.trips << @trip
       redirect_to root_path
     else
       render :new
@@ -35,7 +36,7 @@ class TripsController < ApplicationController
 
   def destroy
     trip = load_trip_from_url
-    trip.destroy
+    current_user.trips.destroy(trip)
     redirect_to trips_path
   end
 
@@ -47,6 +48,7 @@ class TripsController < ApplicationController
 
   def trip_params
     params.require(:trip).
-      permit(:starts_on, :city, :completed)
+      permit(:starts_on, :city, :completed).
+      merge(owner_id: current_user.id)
   end
 end

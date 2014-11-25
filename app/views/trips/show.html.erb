@@ -10,9 +10,9 @@
   <tr><%= render @trip %></tr>
 </table>
 
-<%= link_to "Edit", edit_trip_path(@trip) %>
-
-<%= button_to "Delete", @trip, method: :delete %>
+<div class="share-link">
+  <%= link_to "Share to friends", trip_trip_groups_path(@trip) %>
+</div>
 
 <h3>View all locations and stops</h3>
 
@@ -32,9 +32,15 @@
   <%= render @trip.stops.in_order %>
 </table>
 
-<%= link_to "Create a new location", new_location_path %>
+<% if current_user.owner?(@trip) %>
+  <div class="create-link">
+    <%= link_to "Create a new location", new_location_path %>
+  </div>
 
-<%= link_to "Add a stop", new_trip_stop_path(@trip) %>
+  <div class="create-link">
+    <%= link_to "Add a stop", new_trip_stop_path(@trip) %>
+  </div>
+<% end %>
 
 <div class="mode-select">
   <%= select_tag "mode-select-tag", options_for_select(
