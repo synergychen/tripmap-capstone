@@ -32,13 +32,15 @@
   <%= render @trip.stops.in_order %>
 </table>
 
-<div class="create-link">
-  <%= link_to "Create a new location", new_location_path %>
-</div>
+<% if current_user.owner?(@trip) %>
+  <div class="create-link">
+    <%= link_to "Create a new location", new_location_path %>
+  </div>
 
-<div class="create-link">
-  <%= link_to "Add a stop", new_trip_stop_path(@trip) %>
-</div>
+  <div class="create-link">
+    <%= link_to "Add a stop", new_trip_stop_path(@trip) %>
+  </div>
+<% end %>
 
 <div class="mode-select">
   <%= select_tag "mode-select-tag", options_for_select(
