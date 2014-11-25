@@ -1,5 +1,5 @@
 class TripGroupsController < ApplicationController
-  def index
+  def show
     @trip = load_trip_from_url
     @shared_users = @trip.shared_users_except(current_user)
     @unshared_users = @trip.unshared_users
