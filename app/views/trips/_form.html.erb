@@ -1,3 +1,5 @@
+<%= render "error_messages", target: trip %>
+
 <%= form_for trip do |form| %>
   <%= form.label :starts_on %>
   <%= form.datetime_local_field :starts_on %>

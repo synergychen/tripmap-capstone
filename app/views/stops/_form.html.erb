@@ -1,3 +1,5 @@
+<%= render "error_messages", target: stop %>
+
 <%= form_for [trip, stop] do |form| %>
   <%= form.label :stay_time %>
   <%= form.text_field :stay_time %>
