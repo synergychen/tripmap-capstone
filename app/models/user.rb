@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   has_many :owned_trips, foreign_key: :owner_id, class_name: "Trip"
 
   def owner?(trip)
-    self == trip.owner
+    id == trip.owner_id
   end
 end
