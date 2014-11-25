@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
   has_many :trips, through: :trip_groups
 
   has_many :owned_trips, foreign_key: :owner_id, class_name: "Trip"
+
+  def owner?(trip)
+    self == trip.owner
+  end
 end

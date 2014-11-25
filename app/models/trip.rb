@@ -38,6 +38,10 @@ class Trip < ActiveRecord::Base
     User.where.not(id: shared_user_ids)
   end
 
+  def shared_to?(user)
+    users.include?(user)
+  end
+
   private
 
   def get_ordered_stops_ids
