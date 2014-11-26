@@ -26,11 +26,8 @@ class StopsController < ApplicationController
     @trip = load_trip_from_url
     @stop = load_stop_from_url
 
-    if @stop.update(stop_params)
-      redirect_to @trip
-    else
-      render :edit
-    end
+    @stop.update(stop_params)
+    render @stop
   end
 
   def destroy

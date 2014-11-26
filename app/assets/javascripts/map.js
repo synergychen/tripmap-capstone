@@ -15,7 +15,7 @@ function initializeMap(){
 function drawMap() {
   var tripCity = $(".trip-city").find("a").html();
 
-  $.each($(".trip-table-row"), function(i, trip) {
+  $.each($(".location-stop-row"), function(i, trip) {
     var stopOrder = $(trip).find(".stop-order").html();
     var stopAddress = $(trip).find(".location-address").html();
     var locationName= $(trip).find(".location-name").html();
