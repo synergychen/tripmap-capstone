@@ -8,6 +8,7 @@ class StopOrdersController < ApplicationController
   end
 
   def update
+    binding.pry
     stop = load_stop_from_url
     trip = stop.trip
 
