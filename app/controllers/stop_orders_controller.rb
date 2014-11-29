@@ -8,13 +8,12 @@ class StopOrdersController < ApplicationController
   end
 
   def update
-    binding.pry
     stop = load_stop_from_url
     trip = stop.trip
 
     trip.reorder_stops_after(stop, proposed_order)
 
-    redirect_to trip
+    render trip
   end
 
   private
