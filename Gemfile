@@ -11,6 +11,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'better_errors', group: :development
 gem 'binding_of_caller', group: :development
+gem 'jquery-ui-rails', '~>4.2'
 gem 'monban-generators'
 gem 'neat'
 gem 'pry', group: :development
