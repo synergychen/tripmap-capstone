@@ -11,5 +11,5 @@
   <%= form.label :location_id %>
   <%= form.collection_select :location_id, Location.all, :id, :name_with_address %>
 
-  <%= form.submit %>
+  <%= form.submit "Add a stop" %>
 <% end %>

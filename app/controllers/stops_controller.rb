@@ -1,19 +1,16 @@
 class StopsController < ApplicationController
   before_action :require_ownership
 
-  def new
-    @trip = load_trip_from_url
-    @stop = @trip.stops.new
-  end
-
   def create
     @trip = load_trip_from_url
     @stop = @trip.stops.new(stop_params.merge(order: @trip.stops.count + 1))
 
     if @stop.save
-      redirect_to @trip
+      render @stop
     else
-      render :new
+      render partial: "error_messages",
+        locals: { target: @stop },
+        status: 422
     end
   end
 

@@ -37,8 +37,11 @@
     <%= link_to "Create a new location", new_location_path %>
   </div>
 
-  <div class="create-link">
-    <%= link_to "Add a stop", new_trip_stop_path(@trip) %>
+  <div class="add-stop">
+    <div class="errors"></div>
+    <div class="stop-form">
+      <%= render "stops/form", trip: @trip, stop: @stop %>
+    </div>
   </div>
 <% end %>
 
