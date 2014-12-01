@@ -1,3 +1,5 @@
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+
 <h3>View Trip to <%= @trip.city %> on <%= @trip.starts_on %></h3>
 
 <table>
@@ -13,6 +15,10 @@
 <div class="share-link">
   <%= link_to "Share to friends", trip_trip_groups_path(@trip) %>
 </div>
+
+<label for="searchTextField">Please Insert an address:</label>
+<br>
+<input id="searchTextField" type="text" size="50">
 
 <h3>View all locations and stops</h3>
 
