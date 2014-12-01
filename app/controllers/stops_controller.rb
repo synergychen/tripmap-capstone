@@ -8,9 +8,7 @@ class StopsController < ApplicationController
     if @stop.save
       render @stop
     else
-      render partial: "error_messages",
-        locals: { target: @stop },
-        status: 422
+      render partial: "error_messages", locals: { target: @stop }, status: 422
     end
   end
 
@@ -33,7 +31,7 @@ class StopsController < ApplicationController
     stop.destroy
     trip.update_stops_after(stop)
 
-    redirect_to trip
+    render nothing: true
   end
 
   private

@@ -16,7 +16,9 @@ function postNewStopToServer() {
 
   stopAddRequest.done(addStopDataToTable);
   stopAddRequest.fail(onFailure);
+
   resetForm();
+
   return false;
 };
 
@@ -33,7 +35,7 @@ function onFailure(ajaxObject) {
 };
 
 function resetForm() {
-  var newTaskForm = $("form#new_task");
-  newTaskForm.find("#task_title, #task_description").val("");
-  newTaskForm.find("#task_title").focus();
+  var newStopForm = $("form.new_stop");
+  newStopForm.find("#stop_stay_time").val(0);
+  newStopForm.find("#stop_transportation_mode").val("Walking");
 };

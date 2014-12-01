@@ -12,7 +12,8 @@
   <% if current_user.owner?(@trip) %>
     <td>
       <%= link_to "Edit stop", edit_trip_stop_path(stop.trip, stop) %>
-      <%= button_to "Delete stop", [stop.trip, stop], method: :delete %>
+      <%= button_to "Delete stop", [stop.trip, stop], method: :delete, class:
+        "delete-stop-button" %>
       <%= link_to "Change order", edit_stop_stop_orders_path(stop) %>
     </td>
   <% end %>
