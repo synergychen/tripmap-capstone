@@ -3,8 +3,9 @@ $(function() {
   $("body").on("keydown", ".stop-stay_time", submitOnEnter);
 });
 
-var editStayTime = function() {
+function editStayTime() {
   var stopStayTime = $(this);
+  stopStayTime.empty();
   stopStayTime.attr("contenteditable", true).focus();
 };
 
