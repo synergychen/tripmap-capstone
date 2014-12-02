@@ -1,3 +1,5 @@
+var MILE_PER_METER = 0.000621371;
+
 var startAndEndStop = [];
 var wayPoints = [];
 var distanceBetweenStops = [];
@@ -30,15 +32,16 @@ function getStopsAndWaypoints() {
   $.each($(".location-stop-row"), function(i, trip) {
     var stopAddress = $(trip).find(".location-address").html();
     var address = stopAddress + ", " + tripCity
-    var stayTime = $(trip).find(".stop-stay_time").html();
+    var stayTime = $(trip).find(".stop-stay_time");
 
     if ( i === 0 || i === stopNumber - 1 ) {
       startAndEndStop.push(address);
+      stayTime.html("-")
     } else {
       wayPoints.push({location: address})
-      stayTimeInt = parseInt(stayTime, 10);
+      stayTimeInt = parseInt(stayTime.html(), 10);
       stayTimes.push(stayTimeInt);
-      $(trip).find(".stop-stay_time").html(reformatTime(stayTimeInt))
+      stayTime.html(convertMinuteToHour(stayTimeInt))
     }
   });
 }
@@ -78,7 +81,7 @@ function displayDistanceAndDuration() {
 
 function displayTotalTime() {
   var totalTime = getTotalTime();
-  $(".estimated-total-time").html(reformatTime(totalTime));
+  $(".estimated-total-time").html(convertMinuteToHour(totalTime));
 }
 
 function displayTimeAndDistanceToNextStop() {
@@ -88,8 +91,8 @@ function displayTimeAndDistanceToNextStop() {
 
     if( !isNaN(timeToNextStopInMinutes) ) {
       $(toNextStopRow).html(
-        reformatTime(timeToNextStopInMinutes) + " (" +
-        reformatDistance(distanceToNextStopInMeters) + " miles)"
+        convertMinuteToHour(timeToNextStopInMinutes) + " (" +
+        convertMeterToMile(distanceToNextStopInMeters) + ")"
       );
     }
   })
@@ -107,7 +110,7 @@ function secondsToMinutes(timeInSeconds) {
   return parseInt(timeInSeconds/60, 10);
 }
 
-function reformatTime(timeInMinutes) {
+function convertMinuteToHour(timeInMinutes) {
   hours = parseInt(timeInMinutes/60, 10);
   minutes = timeInMinutes % 60;
 
@@ -120,6 +123,6 @@ function reformatTime(timeInMinutes) {
   }
 }
 
-function reformatDistance(distanceInMeters) {
-  return (0.000621371 * distanceInMeters).toFixed(2);
+function convertMeterToMile(distanceInMeters) {
+  return (MILE_PER_METER* distanceInMeters).toFixed(2) + " miles";
 }
