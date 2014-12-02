@@ -3,7 +3,8 @@
 <table>
   <tr>
     <th>Date</th>
-    <th>Starts On</th>
+    <th>Starts</th>
+    <th>Estimated Total Time</th>
     <th>Place</th>
     <th>Status (if completed)</th>
   </tr>
@@ -22,7 +23,7 @@
     <th>Name</th>
     <th>Address</th>
     <th>Stay Time (minutes)</th>
-    <th>Transportation Mode</th>
+    <th>To Next Stop (minutes / meters)</th>
     <th>Description</th>
     <th></th>
   </tr>
@@ -47,11 +48,5 @@
   <%= select_tag "mode-select-tag", options_for_select(
   ApplicationHelper::WAYPOINTS_TRANS_MODE) %>
 </div>
-
-<div class="distance-summary"></div>
-
-<div class="duration-summary"></div>
-
-<div class="stay_time-summary"></div>
 
 <div id="map-canvas"></div>
