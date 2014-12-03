@@ -69,7 +69,7 @@ function getStopsAndWaypoints() {
   var tripCity = $(".trip-city").find("a").html();
   var stopNumber = $(".location-stop-row").length;
 
-  $.each($(".location-stop-row"), function(i, trip) {
+  $(".location-stop-row").each(function(i, trip) {
     var stopAddress = $(trip).find(".location-address").html();
     var address = stopAddress + ", " + tripCity
     var stayTime = $(trip).find(".stop-stay_time");

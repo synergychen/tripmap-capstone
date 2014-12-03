@@ -13,9 +13,5 @@
 //= require jquery
 //= require jquery.ui.all
 //= require jquery_ujs
-//= require map
-//= require add_stop
-//= require delete_stop
-//= require table_sortable
-//= require travel_mode
-//= require update_stay_time
+//= require ./trip/map
+//= require_tree ./trip
