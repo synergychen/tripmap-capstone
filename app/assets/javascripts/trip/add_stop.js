@@ -1,42 +1,45 @@
-$(function() {
-  var newStopForm = $("form.new_stop");
-  newStopForm.submit(postNewStopToServer);
-});
-
-function postNewStopToServer() {
-  var newStopForm = $("form.new_stop");
-  var stopData = newStopForm.serialize();
-  var reqUrl = newStopForm.attr("action");
-
-  var stopAddRequest = $.ajax({
-    url: reqUrl,
-    type: "POST",
-    data: stopData
+(function() {
+  $(function() {
+    var newStopForm = $("form.new_stop");
+    newStopForm.submit(postNewStopToServer);
   });
 
-  stopAddRequest.done(addStopDataToTable);
-  stopAddRequest.fail(onFailure);
+  function postNewStopToServer() {
+    var newStopForm = $("form.new_stop");
+    var stopData = newStopForm.serialize();
+    var reqUrl = newStopForm.attr("action");
 
-  resetForm();
+    var stopAddRequest = $.ajax({
+      url: reqUrl,
+      type: "POST",
+      data: stopData
+    });
 
-  return false;
-};
+    stopAddRequest.done(addStopDataToTable);
 
-function addStopDataToTable(stopHtml) {
-  var tripTable = $(".trip-table");
-  var stopRow = $(stopHtml);
-  tripTable.append(stopRow);
-  $(".errors").html("");
-  $("body").trigger("updateMap");
-};
+    stopAddRequest.fail(onFailure);
 
-function onFailure(ajaxObject) {
-  var htmlFromServer = ajaxObject.responseText;
-  $(".errors").html(htmlFromServer);
-};
+    resetForm();
 
-function resetForm() {
-  var newStopForm = $("form.new_stop");
-  newStopForm.find("#stop_stay_time").val(0);
-  newStopForm.find("#stop_transportation_mode").val("Walking");
-};
+    return false;
+  };
+
+  function addStopDataToTable(stopHtml) {
+    var tripTable = $(".trip-table");
+    var stopRow = $(stopHtml);
+    tripTable.append(stopRow);
+    $(".stop-errors").html("");
+    $("body").trigger("updateMap");
+  };
+
+  function onFailure(ajaxObject) {
+    var htmlFromServer = ajaxObject.responseText;
+    $(".stop-errors").html(htmlFromServer);
+  };
+
+  function resetForm() {
+    var newStopForm = $("form.new_stop");
+    newStopForm.find("#stop_stay_time").val(0);
+    newStopForm.find("#stop_transportation_mode").val("Walking");
+  };
+})();

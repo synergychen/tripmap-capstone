@@ -1,42 +1,44 @@
-$(function() {
-  $("body").on("submit", "form.button_to", deleteStopFromServer);
-});
-
-function deleteStopFromServer() {
-  var stopForm = $(this);
-  var stopRow = stopForm.parents("tr");
-  var stopId = stopRow.data("stop-id");
-  var stopData = stopForm.serialize();
-
-  var stopDeleteRequest = $.ajax({
-    url: stopForm.attr("action"),
-    type: "DELETE",
-    data: stopData
+(function() {
+  $(function() {
+    $("body").on("click", ".delete-stop-button", deleteStopFromServer);
   });
 
-  stopDeleteRequest.done(function(){
-    stopRow.fadeOut(function(){
-      $(this).remove();
-      reorderStops();
+  function deleteStopFromServer() {
+    var stopForm = $(this).parents("form");
+    var stopRow = stopForm.parents("tr");
+    var stopId = stopRow.data("stop-id");
+    var stopData = stopForm.serialize();
+
+    var stopDeleteRequest = $.ajax({
+      url: stopForm.attr("action"),
+        type: "DELETE",
+        data: stopData
     });
-  })
 
-  stopDeleteRequest.fail(onFailure);
+    stopDeleteRequest.done(function(){
+      stopRow.fadeOut(function(){
+        $(this).remove();
+        reorderStops();
+      });
+    })
 
-  return false;
-};
+    stopDeleteRequest.fail(onFailure);
 
-function reorderStops() {
-  var newStops = $(".location-stop-row");
+    return false;
+  };
 
-  newStops.each(function(index, newStop) {
-    newStopOrder = $(newStop).find(".stop-order");
-    newStopOrder.html( index + 1 );
-    $("body").trigger("updateMap");
-  })
-}
+  function reorderStops() {
+    var newStops = $(".location-stop-row");
 
-function onFailure(ajaxObject) {
-  console.log("FAILED");
-  var htmlFromServer = ajaxObject.responseText;
-};
+    newStops.each(function(index, newStop) {
+      newStopOrder = $(newStop).find(".stop-order");
+      newStopOrder.html( index + 1 );
+      $("body").trigger("updateMap");
+    })
+  }
+
+  function onFailure(ajaxObject) {
+    console.log("FAILED");
+    var htmlFromServer = ajaxObject.responseText;
+  };
+})();

@@ -33,12 +33,14 @@
 
 <% if current_user.owner?(@trip) %>
   <div class="create-link">
-    <%= link_to "Create a new location", new_location_path %>
-    <%= render "locations/form", location: @location %>
+    <div class="location-errors"></div>
+    <div class="location-form">
+      <%= render "locations/form", location: @location %>
+    </div>
   </div>
 
   <div class="add-stop">
-    <div class="errors"></div>
+    <div class="stop-errors"></div>
     <div class="stop-form">
       <%= render "stops/form", trip: @trip, stop: @stop %>
     </div>

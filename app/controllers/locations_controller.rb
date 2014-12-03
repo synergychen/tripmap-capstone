@@ -3,9 +3,10 @@ class LocationsController < ApplicationController
     @location = Location.new(location_params)
 
     if @location.save
-      redirect_to :back
+      render @location
     else
-      render :new
+      render partial: "error_messages",
+        locals: { target: @location }, status: 422
     end
   end
 
