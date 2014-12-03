@@ -34,6 +34,7 @@
 <% if current_user.owner?(@trip) %>
   <div class="create-link">
     <%= link_to "Create a new location", new_location_path %>
+    <%= render "locations/form", location: @location %>
   </div>
 
   <div class="add-stop">

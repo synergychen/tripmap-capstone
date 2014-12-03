@@ -22,6 +22,7 @@ class TripsController < ApplicationController
   def show
     @trip = load_trip_from_url
     @stop = @trip.stops.new
+    @location = Location.new
   end
 
   def edit
