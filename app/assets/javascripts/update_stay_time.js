@@ -27,7 +27,8 @@ function submitOnEnter(){
     });
 
     stopUpdateRequest.done(function(){
-      stopStayTime.removeAttr("contenteditable");
+      stopStayTime.attr("val", newStayTime);
+      stopStayTime.removeAttr("contenteditable").trigger("updateMap");
     });
 
     return false;

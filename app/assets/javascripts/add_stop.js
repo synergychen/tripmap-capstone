@@ -27,6 +27,7 @@ function addStopDataToTable(stopHtml) {
   var stopRow = $(stopHtml);
   tripTable.append(stopRow);
   $(".errors").html("");
+  $("body").trigger("updateMap");
 };
 
 function onFailure(ajaxObject) {

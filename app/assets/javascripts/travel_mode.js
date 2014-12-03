@@ -13,7 +13,11 @@ $(function() {
   initialize();
   calcAndDrawAllRoute(displayDistanceAndDuration);
 
-  $("#mode-select-tag").change(function(){
+  $("#mode-select-tag").change(function() {
+    calcAndDrawAllRoute(displayDistanceAndDuration);
+  });
+
+  $("body").on("updateMap", function() {
     calcAndDrawAllRoute(displayDistanceAndDuration);
   });
 })
@@ -21,39 +25,18 @@ $(function() {
 function initialize() {
   directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
   directionsDisplay.setMap(window.map);
-
-  getStopsAndWaypoints();
-}
-
-function getStopsAndWaypoints() {
-  var tripCity = $(".trip-city").find("a").html();
-  var stopNumber = $(".location-stop-row").length;
-
-  $.each($(".location-stop-row"), function(i, trip) {
-    var stopAddress = $(trip).find(".location-address").html();
-    var address = stopAddress + ", " + tripCity
-    var stayTime = $(trip).find(".stop-stay_time");
-
-    if ( i === 0 || i === stopNumber - 1 ) {
-      startAndEndStop.push(address);
-      stayTime.html("-")
-    } else {
-      wayPoints.push({location: address})
-      stayTimeInt = parseInt(stayTime.html(), 10);
-      stayTimes.push(stayTimeInt);
-      stayTime.html(convertMinuteToHour(stayTimeInt))
-    }
-  });
 }
 
 function calcAndDrawAllRoute(callback) {
+  resetTimeAndDistance();
+  getStopsAndWaypoints();
+
   var selectedMode = $("#mode-select-tag")[0].value;
 
   var request = {
       origin: startAndEndStop[0],
       destination: startAndEndStop[1],
       waypoints: wayPoints,
-      optimizeWaypoints: true,
       travelMode: google.maps.TravelMode[selectedMode]
   };
 
@@ -74,6 +57,35 @@ function calcAndDrawAllRoute(callback) {
   });
 }
 
+function resetTimeAndDistance() {
+  startAndEndStop = [];
+  wayPoints = [];
+  distanceBetweenStops = [];
+  timeOnRoads = [];
+  stayTimes = [];
+}
+
+function getStopsAndWaypoints() {
+  var tripCity = $(".trip-city").find("a").html();
+  var stopNumber = $(".location-stop-row").length;
+
+  $.each($(".location-stop-row"), function(i, trip) {
+    var stopAddress = $(trip).find(".location-address").html();
+    var address = stopAddress + ", " + tripCity
+    var stayTime = $(trip).find(".stop-stay_time");
+
+    if ( i === 0 || i === stopNumber - 1 ) {
+      startAndEndStop.push(address);
+      stayTime.html("-")
+    } else {
+      wayPoints.push({location: address})
+      stayTimeInt = parseInt(stayTime.attr("val"), 10);
+      stayTimes.push(stayTimeInt);
+      stayTime.html(convertMinuteToHour(stayTimeInt))
+    }
+  });
+}
+
 function displayDistanceAndDuration() {
   displayTimeAndDistanceToNextStop();
   displayTotalTime();
@@ -85,15 +97,20 @@ function displayTotalTime() {
 }
 
 function displayTimeAndDistanceToNextStop() {
+  stopNumber = $(".to-next-stop").length;
   $(".to-next-stop").each(function(index, toNextStopRow) {
-    timeToNextStopInMinutes = secondsToMinutes(timeOnRoads[index]);
-    distanceToNextStopInMeters = distanceBetweenStops[index];
+    if (index === stopNumber - 1) {
+      $(toNextStopRow).html("-");
+    } else {
+      timeToNextStopInMinutes = secondsToMinutes(timeOnRoads[index]);
+      distanceToNextStopInMeters = distanceBetweenStops[index];
 
-    if( !isNaN(timeToNextStopInMinutes) ) {
-      $(toNextStopRow).html(
-        convertMinuteToHour(timeToNextStopInMinutes) + " (" +
-        convertMeterToMile(distanceToNextStopInMeters) + ")"
-      );
+      if( !isNaN(timeToNextStopInMinutes) ) {
+        $(toNextStopRow).html(
+          convertMinuteToHour(timeToNextStopInMinutes) + " (" +
+          convertMeterToMile(distanceToNextStopInMeters) + ")"
+          );
+      }
     }
   })
 }

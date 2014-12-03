@@ -26,4 +26,8 @@ function updateServerStopOrder(stopId, proposedOrder) {
     type: "PATCH",
     data: { stop: { order: proposedOrder }}
   });
+
+  stopOrderUpdateRequest.done(function() {
+    $("body").trigger("updateMap");
+  });
 }
