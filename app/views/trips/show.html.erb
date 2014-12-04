@@ -11,8 +11,9 @@
   <tr><%= render @trip %></tr>
 </table>
 
-<div class="share-link">
-  <%= link_to "Share to friends", trip_trip_groups_path(@trip) %>
+<div>
+  <%= link_to "Share to friends", trip_trip_groups_path(@trip),
+    class: "share-link" %>
 </div>
 
 <h3>View all locations and stops</h3>
