@@ -63,17 +63,22 @@ body {
 }
 
 .footer {
-  @include span-columns(8);
-  @include shift(2);
+  @include span-columns(12);
   padding-top: 20px;
   padding-bottom: 20px;
+  background-color: #232b2d;
+  color: #ccc;
 
   .footer-container {
-    margin: 0 auto;
+    @include span-columns(8);
+    @include shift(2);
   }
 }
 
 .footer-nav {
+  padding-left: 10px;
+  padding-right: 10px;
+
   .footer-nav-list {
     list-style: none;
     padding: 0;
