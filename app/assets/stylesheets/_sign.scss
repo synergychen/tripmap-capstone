@@ -1,30 +1,34 @@
 .sign-wrapper {
-  width: 30%;
-  margin: 0 auto;
-  padding: 1em;
-  border: 1px solid #e5e5e5;
+  @include span-columns(4);
+  @include shift(4);
+  margin-top: 25%;
+  margin-bottom: 25%;
+  padding: 20px;
+  border: 0 none;
   border-radius: 5px;
-  box-shadow: 2px 2px 1px #e5e5e5;
+  box-shadow: 0 0 10px 1.5px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+
+  h2.sign-header {
+    text-align: center;
+  }
 
   .form-item {
-    padding: 0.5em;
+    padding: 5px 40px;
 
     input {
-      width: 70%;
-      float: right;
+      width: 100%;
+      height: 30px;
       border-radius: 3px;
     }
   }
 
   .form-submit {
-    padding: 0.5em;
-
-    width: 50%;
-    margin: 0 auto;
+    height: 50px;
+    padding: 5px 85px;
 
     input {
-      width: 100%;
-      height: 30px;
+      width: 100px;
     }
   }
 }

@@ -1,4 +1,6 @@
 <div class="sign-wrapper">
+  <h2 class="sign-header">Sign Up</h2>
+
   <%= form_for @user, class: "sign-form" do |form| %>
     <div class="sign-error">
       <% if @user.errors.any? %>
@@ -13,11 +15,9 @@
     </div>
 
     <div class="form-item">
-      <%= form.label :email %>
       <%= form.email_field :email, placeholder: "Email" %>
     </div>
     <div class="form-item">
-      <%= form.label :password %>
       <%= form.password_field :password, placeholder: "Password" %>
     </div>
     <div class="form-submit">
