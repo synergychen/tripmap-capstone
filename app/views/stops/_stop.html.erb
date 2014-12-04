@@ -5,7 +5,6 @@
   <td class="location-address"><%= stop.location.address %></td>
   <td class="stop-stay_time" val="<%= stop.stay_time %>"></td>
   <td class="to-next-stop"></td>
-  <td><%= stop.location.description %></td>
 
   <% if current_user.owner?(@trip) %>
     <td>

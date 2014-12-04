@@ -1,14 +1,18 @@
-<h3>View all trips</h3>
+<div class="all-trips main-box">
+  <h3>View all trips</h3>
 
-<%= link_to "Create a new trip", new_trip_path %>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Starts</th>
+      <th>Estimated Ends</th>
+      <th>Place</th>
+      <th>Status</th>
+    </tr>
+    <%= render @trips %>
+  </table>
+</div>
 
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Starts</th>
-    <th>Estimated Ends</th>
-    <th>Place</th>
-    <th>Status (if completed)</th>
-  </tr>
-  <%= render @trips %>
-</table>
+<div class="new-trip-link main-box">
+  <%= link_to "Create a new trip", new_trip_path %>
+</div>

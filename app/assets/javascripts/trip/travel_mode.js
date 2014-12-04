@@ -132,16 +132,14 @@
     hours = parseInt(timeInMinutes/60, 10);
     minutes = timeInMinutes % 60;
 
-    if (hours > 1) {
-      return hours + " hours " + minutes + " minutes"
-    } else if (hours === 1) {
-      return hours + " hour " + minutes + " minutes"
+    if (hours >= 1) {
+      return hours + " hr " + minutes + " min"
     } else {
-      return minutes + " minutes"
+      return minutes + " min"
     }
   }
 
   function convertMeterToMile(distanceInMeters) {
-    return (MILE_PER_METER* distanceInMeters).toFixed(2) + " miles";
+    return (MILE_PER_METER* distanceInMeters).toFixed(2) + " mi";
   }
 })();

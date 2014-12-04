@@ -12,6 +12,14 @@
 
 .all-locations-stops {
   background-color: #fff;
+
+  .mode-select {
+    margin-bottom: 0;
+  }
+}
+
+.new-location-stop {
+  background-color: #f6f6f6;
 }
 
 .map {
@@ -19,9 +27,15 @@
   background-color: #f6f6f6;
 }
 
-h1, h2, h3 {
-  margin: 0;
+.new-trip-link {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
+
+h1, h2, h3 {
+  margin-top: 0;
+}
+
 
 #map-canvas {
   height: 500px;
