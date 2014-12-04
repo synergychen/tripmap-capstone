@@ -1,3 +1,28 @@
+.main-box {
+  margin: 2px 0;
+  border: 0 none;
+  padding: 30px;
+  box-shadow: 0 0 10px 1.5px rgba(0, 0, 0, 0.1);
+}
+
+.trip-overview {
+  margin-top: 0;
+  background-color: #f6f6f6;
+}
+
+.all-locations-stops {
+  background-color: #fff;
+}
+
+.map {
+  margin-bottom: 0;
+  background-color: #f6f6f6;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
 #map-canvas {
   height: 500px;
   width: 100%;

@@ -1,56 +1,62 @@
-<h3>View Trip to <%= @trip.city %> on <%= @trip.starts_on %></h3>
+<div class="trip-overview main-box">
+  <h3>View Trip to <%= @trip.city %> on <%= @trip.starts_on %></h3>
 
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Starts</th>
-    <th>Estimated Total Time</th>
-    <th>Place</th>
-    <th>Status (if completed)</th>
-  </tr>
-  <tr><%= render @trip %></tr>
-</table>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Starts</th>
+      <th>Estimated Total Time</th>
+      <th>Place</th>
+      <th>Status (if completed)</th>
+    </tr>
+    <tr><%= render @trip %></tr>
+  </table>
 
-<div>
-  <%= link_to "Share to friends", trip_trip_groups_path(@trip),
-    class: "share-link" %>
+  <div>
+    <%= link_to "Share to friends", trip_trip_groups_path(@trip),
+      class: "share-link" %>
+  </div>
 </div>
 
-<h3>View all locations and stops</h3>
+<div class="all-locations-stops main-box">
+  <h3>View all locations and stops</h3>
 
-<table class="trip-table">
-  <tr>
-    <th>No.</th>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Stay Time (minutes)</th>
-    <th>To Next Stop (minutes / miles)</th>
-    <th>Description</th>
-    <th></th>
-  </tr>
+  <table class="trip-table">
+    <tr>
+      <th>No.</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Stay Time (minutes)</th>
+      <th>To Next Stop (minutes / miles)</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
 
-  <%= render @trip.stops.in_order %>
-</table>
+    <%= render @trip.stops.in_order %>
+  </table>
 
-<% if current_user.owner?(@trip) %>
-  <div class="create-link">
-    <div class="location-errors"></div>
-    <div class="location-form">
-      <%= render "locations/form", location: @location %>
+  <% if current_user.owner?(@trip) %>
+    <div class="create-link">
+      <div class="location-errors"></div>
+      <div class="location-form">
+        <%= render "locations/form", location: @location %>
+      </div>
     </div>
-  </div>
 
-  <div class="add-stop">
-    <div class="stop-errors"></div>
-    <div class="stop-form">
-      <%= render "stops/form", trip: @trip, stop: @stop %>
+    <div class="add-stop">
+      <div class="stop-errors"></div>
+      <div class="stop-form">
+        <%= render "stops/form", trip: @trip, stop: @stop %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 
-<div class="mode-select">
-  <%= select_tag "mode-select-tag", options_for_select(
-  ApplicationHelper::WAYPOINTS_TRANS_MODE) %>
+  <div class="mode-select">
+    <%= select_tag "mode-select-tag", options_for_select(
+      ApplicationHelper::WAYPOINTS_TRANS_MODE) %>
+  </div>
 </div>
 
-<div id="map-canvas"></div>
+<div class="map main-box">
+  <div id="map-canvas"></div>
+</div>
