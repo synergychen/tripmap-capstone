@@ -9,16 +9,18 @@ body {
 }
 
 .header {
-  @include span-columns(8);
-  @include shift(2);
+  @include span-columns(12);
+  border-bottom: 1px solid #e5e5e5;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #e5e5e5;
+  color: #ccc;
   font-weight: bold;
-  color: #000;
+  background-color: #232b2d;
+  height: 42px;
 
   .header-container {
-    margin: 0 auto;
+    @include span-columns(8);
+    @include shift(2);
   }
 }
 
@@ -26,10 +28,12 @@ body {
 }
 
 .header-title {
+  padding-left: 10px;
+  padding-right: 10px;
   float: left;
 
   .header-title-link {
-    color: #000;
+    color: #ccc;
     text-decoration: none;
   }
 
@@ -40,6 +44,9 @@ body {
 }
 
 .header-nav {
+  padding-left: 10px;
+  padding-right: 10px;
+
   .header-nav-list {
     list-style: none;
     padding: 0;
@@ -53,7 +60,7 @@ body {
 
     .header-nav-link {
       padding: 4px 8px;
-      color: #333;
+      color: #ccc;
       text-decoration: none;
     }
 
