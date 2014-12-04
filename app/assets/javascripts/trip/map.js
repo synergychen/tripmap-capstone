@@ -14,15 +14,11 @@
   }
 
   function drawMap() {
-    var tripCity = $(".trip-city").find("a").html();
-
-    $.each($(".location-stop-row"), function(i, trip) {
-      var stopOrder = $(trip).find(".stop-order").html();
+    $(".location-stop-row").each(function(i, trip) {
       var stopAddress = $(trip).find(".location-address").html();
       var locationName= $(trip).find(".location-name").html();
-      var address = stopAddress;
 
-      codeAddress(address, function(geocodeAddress){
+      codeAddress(stopAddress, function(geocodeAddress){
         marker = addMarker(i+1, geocodeAddress);
 
         infowindow = addInfoWindow(locationName);
