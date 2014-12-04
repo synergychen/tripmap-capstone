@@ -9,16 +9,18 @@ body {
 }
 
 .header {
-  @include span-columns(8);
-  @include shift(2);
+  @include span-columns(12);
+  border-bottom: 1px solid #e5e5e5;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #e5e5e5;
-  font-weight: bold;
-  color: #000;
+  color: #ccc;
+  background-color: #232b2d;
+  height: 42px;
 
   .header-container {
-    margin: 0 auto;
+    @include span-columns(8);
+    @include shift(2);
+    box-shadow: 0 0 10px 1.5px rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -26,20 +28,15 @@ body {
 }
 
 .header-title {
+  padding-left: 10px;
+  padding-right: 10px;
   float: left;
-
-  .header-title-link {
-    color: #000;
-    text-decoration: none;
-  }
-
-  .header-title-link:hover {
-    color: #1fbc5a;
-    text-decoration: none;
-  }
 }
 
 .header-nav {
+  padding-left: 10px;
+  padding-right: 10px;
+
   .header-nav-list {
     list-style: none;
     padding: 0;
@@ -50,42 +47,38 @@ body {
       float: left;
       display: inline block;
     }
-
-    .header-nav-link {
-      padding: 4px 8px;
-      color: #333;
-      text-decoration: none;
-    }
-
-    .header-nav-link:hover {
-      color: #0040fa;
-      text-decoration: none;
-    }
   }
 }
 
 .main {
-  @include span-columns(8);
-  @include shift(2);
-  padding-bottom: 40px;
-  border-bottom: 1px solid #e5e5e5;
+  @include span-columns(12);
+  background-color: #f1f1f1;
 
   .main-container {
+    @include span-columns(8);
+    @include shift(2);
+    border: 0 none;
+    box-shadow: 0 0 10px 1.5px rgba(0, 0, 0, 0.3);
   }
 }
 
 .footer {
-  @include span-columns(8);
-  @include shift(2);
+  @include span-columns(12);
   padding-top: 20px;
   padding-bottom: 20px;
+  background-color: #232b2d;
+  color: #ccc;
 
   .footer-container {
-    margin: 0 auto;
+    @include span-columns(8);
+    @include shift(2);
   }
 }
 
 .footer-nav {
+  padding-left: 10px;
+  padding-right: 10px;
+
   .footer-nav-list {
     list-style: none;
     padding: 0;
@@ -95,17 +88,6 @@ body {
     .footer-nav-item {
       float: left;
       display: inline block;
-    }
-
-    .footer-nav-link {
-      padding: 4px 8px;
-      color: #333;
-      text-decoration: none;
-    }
-
-    .footer-nav-link:hover {
-      color: #0040fa;
-      text-decoration: none;
     }
   }
 }

@@ -8,6 +8,8 @@
   <% if current_user.id == trip.owner_id %>
     <td>
       <%= link_to "Edit", edit_trip_path(trip) %>
+    </td>
+    <td>
       <%= button_to "Delete", trip, method: :delete %>
     </td>
   <% end %>
