@@ -3,7 +3,13 @@
   <td><%= trip.starts_on.strftime("%I:%M%p") %></td>
   <td class="estimated-total-time"></td>
   <td class="trip-city"><%= link_to trip.city, trip %></td>
-  <td><%= trip.completed %></td>
+  <td>
+    <% if trip.completed %>
+      <%= button_to "Unarchive", trip_archives_path(trip), method: :delete %>
+    <% else %>
+      <%= button_to "Archive", trip_archives_path(trip) %>
+    <% end %>
+  </td>
 
   <% if current_user.id == trip.owner_id %>
     <td>
