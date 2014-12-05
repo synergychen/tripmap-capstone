@@ -1,5 +1,6 @@
 <% if trip.completed %>
-  <%= button_to "Unarchive", trip_archives_path(trip), method: :delete %>
+  <%= button_to "Unarchive", trip_archives_path(trip), method: :delete,
+    class: "archive-button"%>
 <% else %>
-  <%= button_to "Archive", trip_archives_path(trip) %>
+  <%= button_to "Archive", trip_archives_path(trip), class: "archive-button" %>
 <% end %>
