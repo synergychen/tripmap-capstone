@@ -10,13 +10,15 @@ class Trip < ActiveRecord::Base
 
   belongs_to :owner, class_name: "User"
 
-  def reorder_stops_after(stop, proposed_order)
-    ordered_stop_ids = get_ordered_stops_ids
+  def update_stop_order_after(stop, proposed_order)
+    stop_ids_in_order = stops.sort_by(&:order).map(&:id)
 
-    new_stop_ids = ordered_stop_ids.insert(proposed_order - 1,
-                                           ordered_stop_ids.delete(stop.id))
+    stop_id_to_update = stop_ids_in_order.delete(stop.id)
 
-    new_stop_ids.each_with_index do |id, index|
+    new_stop_ids_in_order = stop_ids_in_order.insert(proposed_order - 1,
+                                                     stop_id_to_update)
+
+    new_stop_ids_in_order.each_with_index do |id, index|
       stops.find(id).update(order: index + 1)
     end
   end

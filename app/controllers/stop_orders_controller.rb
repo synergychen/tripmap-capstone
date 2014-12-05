@@ -11,7 +11,7 @@ class StopOrdersController < ApplicationController
     stop = load_stop_from_url
     trip = stop.trip
 
-    trip.reorder_stops_after(stop, proposed_order)
+    trip.update_stop_order_after(stop, proposed_order)
 
     render trip
   end

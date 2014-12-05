@@ -29,7 +29,7 @@
     var stopRow = $(stopHtml);
     tripTable.append(stopRow);
     $(".stop-errors").html("");
-    $("body").trigger("updateMap");
+    $("body").trigger("updateTableAndMap");
   };
 
   function onFailure(ajaxObject) {

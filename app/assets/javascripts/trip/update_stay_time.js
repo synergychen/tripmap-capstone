@@ -29,7 +29,7 @@
 
       stopUpdateRequest.done(function(){
         stopStayTime.attr("val", newStayTime);
-        stopStayTime.removeAttr("contenteditable").trigger("updateMap");
+        stopStayTime.removeAttr("contenteditable").trigger("updateTableAndMap");
       });
 
       return false;

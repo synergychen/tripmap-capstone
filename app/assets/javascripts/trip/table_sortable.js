@@ -29,7 +29,7 @@
     });
 
     stopOrderUpdateRequest.done(function() {
-      $("body").trigger("updateMap");
+      $("body").trigger("updateTableAndMap");
     });
   }
 })();

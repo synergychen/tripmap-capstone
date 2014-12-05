@@ -18,7 +18,7 @@
       calcAndDrawAllRoute(displayDistanceAndDuration);
     });
 
-    $("body").on("updateMap", function() {
+    $("body").on("updateTableAndMap", function() {
       calcAndDrawAllRoute(displayDistanceAndDuration);
     });
   })
@@ -75,15 +75,15 @@
       var address = stopAddress + ", " + tripCity
       var stayTime = $(trip).find(".stop-stay_time");
 
-    if ( i === 0 || i === stopNumber - 1 ) {
-      startAndEndStop.push(address);
-      stayTime.html("-")
-    } else {
-      wayPoints.push({location: address})
-      stayTimeInt = parseInt(stayTime.attr("val"), 10);
-    stayTimes.push(stayTimeInt);
-    stayTime.html(convertMinuteToHour(stayTimeInt))
-    }
+      if ( i === 0 || i === stopNumber - 1 ) {
+        startAndEndStop.push(address);
+        stayTime.html("-")
+      } else {
+        wayPoints.push({location: address})
+        stayTimeInt = parseInt(stayTime.attr("val"), 10);
+        stayTimes.push(stayTimeInt);
+        stayTime.html(convertMinuteToHour(stayTimeInt));
+      }
     });
   }
 

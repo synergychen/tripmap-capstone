@@ -33,7 +33,7 @@
     newStops.each(function(index, newStop) {
       newStopOrder = $(newStop).find(".stop-order");
       newStopOrder.html( index + 1 );
-      $("body").trigger("updateMap");
+      $("body").trigger("updateTableAndMap");
     })
   }
 
