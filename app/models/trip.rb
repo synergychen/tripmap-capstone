@@ -10,6 +10,8 @@ class Trip < ActiveRecord::Base
 
   belongs_to :owner, class_name: "User"
 
+  default_scope { order(:starts_on) }
+
   def update_stop_order_after(stop, proposed_order)
     stop_ids_in_order = stops.sort_by(&:order).map(&:id)
 
