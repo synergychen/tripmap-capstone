@@ -2,7 +2,8 @@ class TripsController < ApplicationController
   before_action :require_ownership, only: [:edit, :update, :destroy]
 
   def index
-    @trips = current_user.trips
+    @incoming_trips = current_user.incoming_trips
+    @archived_trips = current_user.archived_trips
   end
 
   def new

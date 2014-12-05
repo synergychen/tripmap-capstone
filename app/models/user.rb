@@ -8,4 +8,12 @@ class User < ActiveRecord::Base
   def owner?(trip)
     id == trip.owner_id
   end
+
+  def incoming_trips
+    trips.where(completed: false)
+  end
+
+  def archived_trips
+    trips.where(completed: true)
+  end
 end

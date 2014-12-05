@@ -1,5 +1,5 @@
-<div class="all-trips main-box">
-  <h3>View all trips</h3>
+<div class="incoming-trip main-box">
+  <h3>Incoming Trip</h3>
 
   <table>
     <tr>
@@ -9,7 +9,22 @@
       <th>Place</th>
       <th>Status</th>
     </tr>
-    <%= render @trips %>
+    <%= render @incoming_trips %>
+  </table>
+</div>
+
+<div class="archived-trip main-box">
+  <h3>Archived Trip</h3>
+
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Starts</th>
+      <th>Estimated Ends</th>
+      <th>Place</th>
+      <th>Status</th>
+    </tr>
+    <%= render @archived_trips %>
   </table>
 </div>
 
