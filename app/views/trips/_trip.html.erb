@@ -3,7 +3,9 @@
   <td><%= trip.starts_on.strftime("%I:%M%p") %></td>
   <td class="estimated-total-time"></td>
   <td class="trip-city"><%= link_to trip.city, trip %></td>
-  <td><%= trip.completed %></td>
+  <td>
+    <%= render partial: "archive_button", locals: { trip: trip } %>
+  </td>
 
   <% if current_user.id == trip.owner_id %>
     <td>
