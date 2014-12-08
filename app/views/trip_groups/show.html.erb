@@ -1,13 +1,5 @@
 <div class="trip-groups main-box">
-  <h3>All users</h3>
-
-  <% User.all.each do |user| %>
-    <div>
-      <%= user.email %>
-    </div>
-  <% end %>
-
-  <h3>This trip (owner: <%= @trip.owner.email %>) is now shared to</h3>
+  <h3>Trip (owner: <%= @trip.owner.email %>) is now shared to</h3>
 
   <ul class="share-user-list">
     <%= render partial: @shared_users, locals: { trip: @trip } %>

@@ -5,6 +5,23 @@ table {
   text-align: center;
 
   td, th {
-    border: 1px solid #CCC;
+    border-top: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+  }
+
+  tbody tr:nth-child(odd) {
+    background: #eee;
+  }
+
+  .stop-stay_time {
+    width: 12%;
+  }
+
+  .to-next-stop {
+    width: 20%;
+  }
+
+  .td-row:hover {
+    background-color: rgb(254, 254, 214);
   }
 }

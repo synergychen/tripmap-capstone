@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="trip-overview main-box">
-  <h3>View Trip to <%= @trip.city %> on <%= @trip.starts_on %></h3>
+  <h3>Trip to <%= @trip.city %> ( <%= @trip.starts_on %> )</h3>
 
   <table>
     <tr>
@@ -18,14 +18,16 @@
       <th>Estimated Total Time</th>
       <th>Place</th>
       <th>Status</th>
+      <th></th>
+      <th></th>
     </tr>
     <tr><%= render @trip %></tr>
   </table>
 
-  <div>
+  <h4>
     <%= link_to "Share to friends", trip_trip_groups_path(@trip),
       class: "share-link" %>
-  </div>
+  </h4>
 </div>
 
 <div class="all-locations-stops main-box">
@@ -33,10 +35,10 @@
 
   <table class="trip-table">
     <tr>
-      <th>No.</th>
+      <th>No</th>
       <th>Name</th>
       <th>Address</th>
-      <th>Stay Time (min)</th>
+      <th>Stay (min)</th>
       <th>To Next Stop<br/>(min (mi))</th>
       <th></th>
     </tr>

@@ -2,14 +2,14 @@
 
 <%= form_for [trip, stop] do |form| %>
   <%= form.label :stay_time %>
-  <%= form.text_field :stay_time %>
+  <%= form.text_field :stay_time, size: 10 %>
 
-  <%= form.label :transportation_mode %>
   <%= form.select :transportation_mode,
     ApplicationHelper::TRANSPORTATION_MODE.map(&:capitalize) %>
 
   <%= form.label :location_id %>
-  <%= form.collection_select :location_id, Location.all, :id, :name_with_address %>
+  <%= form.collection_select :location_id, Location.all,
+    :id, :name_with_address %>
 
   <%= form.submit "Add a stop" %>
 <% end %>

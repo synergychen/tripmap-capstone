@@ -1,15 +1,14 @@
-<tr class="location-stop-row" data-trip-id="<%= stop.trip_id%>"
+<tr class="location-stop-row td-row" data-trip-id="<%= stop.trip_id%>"
   data-stop-id="<%= stop.id %>">
   <td class="stop-order"><%= stop.order %></td>
   <td class="location-name"><%= stop.location.name %></td>
   <td class="location-address"><%= stop.location.address %></td>
-  <td class="stop-stay_time" val="<%= stop.stay_time %>"></td>
-  <td class="to-next-stop"></td>
+  <td class="stop-stay_time td-time" val="<%= stop.stay_time %>"></td>
+  <td class="to-next-stop td-time"></td>
 
   <% if current_user.owner?(@trip) %>
     <td>
-      <%= link_to "Edit stop", edit_trip_stop_path(stop.trip, stop) %>
-      <%= button_to "Delete stop", [stop.trip, stop], method: :delete, class:
+      <%= button_to "Delete", [stop.trip, stop], method: :delete, class:
         "delete-stop-button" %>
     </td>
   <% end %>
