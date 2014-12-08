@@ -1,3 +1,7 @@
+<%= content_for :scripts do %>
+  <%= javascript_include_tag "toggle_new_trip.js" %>
+<% end %>
+
 <div class="incoming-trip main-box">
   <h3>Incoming Trip</h3>
 
@@ -32,6 +36,10 @@
   </table>
 </div>
 
-<div class="new-trip-link main-box">
-  <%= link_to "Create a new trip", new_trip_path %>
+<div class="new-trip main-box">
+  <h3>Create a trip</h3>
+
+  <div class="new-trip-form">
+    <%= render "form", trip: @trip %>
+  </div>
 </div>

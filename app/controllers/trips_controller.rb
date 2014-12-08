@@ -4,9 +4,6 @@ class TripsController < ApplicationController
   def index
     @incoming_trips = current_user.incoming_trips
     @archived_trips = current_user.archived_trips
-  end
-
-  def new
     @trip = current_user.trips.new
   end
 
