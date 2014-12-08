@@ -3,6 +3,7 @@
     "add_location.js",
     "add_stop.js",
     "delete_stop.js",
+    "toggle_new_location_stop.js",
     "update_stay_time.js",
     "update_stop.js",
     "update_table_and_map.js" %>
@@ -30,6 +31,28 @@
   </h4>
 </div>
 
+<% if current_user.owner?(@trip) %>
+  <div class="new-location-stop main-box">
+    <h3>Create location and add stop</h3>
+
+    <div class="create-location new-location-stop-form">
+      <p><strong>Create a location</strong></p>
+      <div class="location-errors"></div>
+      <div class="location-form">
+        <%= render "locations/form", location: @location %>
+      </div>
+    </div>
+
+    <div class="add-stop new-location-stop-form">
+      <p><strong>Add a stop</strong></p>
+      <div class="stop-errors"></div>
+      <div class="stop-form">
+        <%= render "stops/form", trip: @trip, stop: @stop %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <div class="all-locations-stops main-box">
   <h3>View all locations and stops</h3>
 
@@ -52,28 +75,6 @@
     </p>
   </div>
 </div>
-
-<% if current_user.owner?(@trip) %>
-  <div class="new-location-stop main-box">
-    <h3>Create location and add stop</h3>
-
-    <div class="create-location">
-      <p><strong>Create a location</strong></p>
-      <div class="location-errors"></div>
-      <div class="location-form">
-        <%= render "locations/form", location: @location %>
-      </div>
-    </div>
-
-    <div class="add-stop">
-      <p><strong>Add a stop</strong></p>
-      <div class="stop-errors"></div>
-      <div class="stop-form">
-        <%= render "stops/form", trip: @trip, stop: @stop %>
-      </div>
-    </div>
-  </div>
-<% end %>
 
 <div class="map main-box">
   <div id="map-canvas"></div>
