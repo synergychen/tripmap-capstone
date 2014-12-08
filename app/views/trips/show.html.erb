@@ -3,6 +3,7 @@
     "add_location.js",
     "add_stop.js",
     "delete_stop.js",
+    "scroll_screen.js",
     "toggle_new_location_stop.js",
     "update_stay_time.js",
     "update_stop.js",
@@ -55,13 +56,14 @@
 
 <div class="all-locations-stops main-box">
   <h3>View all locations and stops</h3>
+  <p><%= image_tag("add_stop.png", class: "add-stop-image") %> Add more stop</p>
 
   <table class="trip-table">
     <tr>
       <th>No</th>
       <th>Name</th>
       <th>Address</th>
-      <th>Stay (min)</th>
+      <th>Duration (min)</th>
       <th>To Next Stop<br/>(min (mi))</th>
       <th></th>
     </tr>
@@ -70,7 +72,7 @@
   </table>
 
   <div class="mode-select">
-    <p class="mode-select">Choose Transportation Mode:
+    <p class="mode-select">Select Mode:
     <%= mode_select %>
     </p>
   </div>
