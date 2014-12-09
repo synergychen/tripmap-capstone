@@ -1,6 +1,6 @@
 module ApplicationHelper
   TRANSPORTATION_MODE = ["WALKING", "TRANSIT", "DRIVING", "BICYCLING"]
-  WAYPOINTS_TRANS_MODE = [["Walking", "WALKING"], ["Driving", "DRIVING"],
+  WAYPOINTS_TRANS_MODE = [["Driving", "DRIVING"], ["Walking", "WALKING"],
                           ["Bicycling", "BICYCLING"]]
 
   def mode_select

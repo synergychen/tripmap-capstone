@@ -1,11 +1,8 @@
 <%= render "error_messages", target: stop %>
 
 <%= form_for [trip, stop] do |form| %>
-  <%= form.label :stay_time %>
+  <%= form.label :Duration %>
   <%= form.text_field :stay_time, size: 10 %>
-
-  <%= form.select :transportation_mode,
-    ApplicationHelper::TRANSPORTATION_MODE.map(&:capitalize) %>
 
   <%= form.label :location_id %>
   <%= form.collection_select :location_id, Location.all,
