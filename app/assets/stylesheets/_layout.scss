@@ -1,18 +1,25 @@
+html, body {
+  height: 100%;
+}
+
 body {
   @include outer-container;
   max-width: 100%;
-  font: 15px/1.4 Helvetica, arial;
+  font: 15px/1.4 sans-serif, Helvetica, arial;
   color: #333;
   background-color: #fff;
   margin: 0;
   display: block;
+  position: relative;
 }
 
 .header {
   @include span-columns(12);
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: #232b2d;
   padding-top: 10px;
   padding-bottom: 10px;
+  position: fixed;
+  z-index: 1;
   color: #ccc;
   background-color: #232b2d;
   height: 42px;
@@ -52,14 +59,28 @@ body {
 
 .main {
   @include span-columns(12);
+  background: url("public_background.jpg") top right no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   background-color: #f1f1f1;
+  min-height: 100%;
+  margin-bottom: -61px;
+  padding-top: 42px;
 
   .main-container {
     @include span-columns(8);
     @include shift(2);
     border: 0 none;
-    box-shadow: 0 0 10px 1.5px rgba(0, 0, 0, 0.3);
   }
+}
+
+.main:after {
+  content: "";
+  display: block;
+}
+
+.footer, .main:after {
+  height: 61px;
 }
 
 .footer {

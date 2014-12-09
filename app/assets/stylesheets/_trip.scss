@@ -2,7 +2,10 @@
   margin: 2px 0;
   border: 0 none;
   padding: 30px;
-  box-shadow: 0 0 10px 1.5px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  box-shadow: 0 0 10px 1.5px rgba(0, 0, 0, 0.9);
+  z-index: 0;
+  opacity: 0.9;
 }
 
 .trip-overview {
@@ -12,6 +15,14 @@
 
 .all-locations-stops {
   background-color: #fff;
+
+  h3:hover {
+    color: #1fbc5a;
+  }
+
+  p:hover {
+    color: #1fbc5a;
+  }
 
   .mode-select {
     margin-bottom: 0;
@@ -25,11 +36,16 @@
 .map {
   margin-bottom: 0;
   background-color: #f6f6f6;
+  opacity: 1;
 }
 
 .new-trip {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.trip-groups {
+  min-height: 707px;
 }
 
 h1, h2, h3 {

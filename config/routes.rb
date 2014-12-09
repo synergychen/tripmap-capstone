@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  root "trips#index"
+  root "publics#index"
 
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create]
 
+  resources :publics, only: [:index]
   resources :trips do
     resources :stops, only: [:new, :create, :edit, :update, :destroy]
     resource :trip_groups, only: [:show, :create, :destroy]

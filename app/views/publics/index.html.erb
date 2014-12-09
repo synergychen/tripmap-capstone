@@ -1,0 +1,10 @@
+<% content_for :public do %>
+  <%= stylesheet_link_tag "public" %>
+  <div class="detail-text">
+    <p class="detail-text-title">Make Trip. Simple.</p>
+    <div class="detail-get-started">
+      <%= link_to "GET STARTED", trips_path, class:
+        "get-started-button" %>
+    </div>
+  </div>
+<% end %>

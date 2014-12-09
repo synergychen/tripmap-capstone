@@ -1,4 +1,6 @@
 (function() {
+  var headerHeight = 42;
+
   $(function() {
     locationStopBoxTitle = $(".all-locations-stops > h3");
     addStopLink = $(".all-locations-stops > p");
@@ -15,7 +17,7 @@
 
   function scrollTableToTop(element) {
     $("body").animate({
-      scrollTop: element.offset().top
+      scrollTop: element.offset().top - headerHeight
     }, 1000);
   }
 })()
