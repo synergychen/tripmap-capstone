@@ -4,10 +4,12 @@
   <td class="estimated-total-time"></td>
   <td class="trip-city"><%= link_to trip.city, trip %></td>
   <td>
-    <% if trip.completed %>
-      <%= button_to "Unarchive", trip_archives_path(trip), method: :delete %>
-    <% else %>
-      <%= button_to "Archive", trip_archives_path(trip) %>
+    <% if current_user.owner?(trip) %>
+      <% if trip.completed %>
+        <%= button_to "Unarchive", trip_archives_path(trip), method: :delete %>
+      <% else %>
+        <%= button_to "Archive", trip_archives_path(trip) %>
+      <% end %>
     <% end %>
   </td>
 
