@@ -19,6 +19,7 @@
     });
 
     $("body").on("updateTableAndMap", function() {
+      $("body").trigger("redrawMap");
       calcAndDrawAllRoute(displayDistanceAndDuration);
     });
   })

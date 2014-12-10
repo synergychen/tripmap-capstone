@@ -1,7 +1,13 @@
 (function() {
+  var markers = [];
+
   $(function() {
     initializeMap();
     drawMap();
+
+    $("body").on("redrawMap", function(){
+      drawMap();
+    });
   })
 
   function initializeMap(){
@@ -14,12 +20,15 @@
   }
 
   function drawMap() {
+    removeAllMarkers();
+
     $(".location-stop-row").each(function(i, trip) {
       var stopAddress = $(trip).find(".location-address").html();
       var locationName= $(trip).find(".location-name").html();
 
       codeAddress(stopAddress, function(geocodeAddress){
         marker = addMarker(i+1, geocodeAddress);
+        markers.push(marker);
 
         infowindow = addInfoWindow(locationName);
         infowindow.open(map, marker);
@@ -47,6 +56,13 @@
            position: geocodeAddress,
            icon: 'https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld='+ index +'|FF776B|000000',
     });
+  }
+
+  function removeAllMarkers(){
+    for(var i = 0; i < markers.length; i++){
+      var marker = markers[i];
+      marker.setMap(null);
+    }
   }
 
   function addInfoWindow(title) {
