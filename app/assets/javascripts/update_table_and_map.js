@@ -95,7 +95,18 @@
 
   function displayTotalTime() {
     var totalTime = getTotalTime();
-    $(".estimated-total-time").html(convertMinuteToHour(totalTime));
+    var startsAtTimeArr = $(".starts_at").html().split(":");
+    var startsAtHours = parseInt(startsAtTimeArr[0]);
+    var startsAtMinutes = parseInt(startsAtTimeArr[1]);
+    var finishHours = startsAtHours + parseInt(totalTime/60, 10);
+    var finishMinutes = startsAtMinutes + totalTime % 60;
+    var reformatedFinishHours =
+      finishHours < 10 ? ("0" + finishHours) : finishHours;
+    var reformatedFinishMinutes =
+      finishMinutes < 10 ? ("0" + finishMinutes) : finishMinutes;
+    var finishTime = reformatedFinishHours + " : " + reformatedFinishMinutes +
+      " ( " + convertMinuteToHour(totalTime) + " )";
+    $(".estimated-total-time").html(finishTime);
   }
 
   function displayTimeAndDistanceToNextStop() {
